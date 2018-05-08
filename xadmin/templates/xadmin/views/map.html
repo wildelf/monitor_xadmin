@@ -1,0 +1,74 @@
+<script src="/static/js/echarts.min.js"></script>
+<script src="/static/plugins/map/js/china.js" type="text/javascript"></script>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main_map'));
+
+    option = {
+        backgroundColor: '#404a59',
+        title: {
+            text: '设备分布图',
+            {#subtext: 'data from PM25.in',#}
+            {#sublink: 'http://www.pm25.in',#}
+            left: 'center',
+            top: 10,
+            textStyle: {
+                color: '#fff'
+            }
+        },
+
+        visualMap: {
+            {#min: 0,#}
+            {#max: 3,#}
+            {#splitNumber: 3,#}
+            color: ['#f00','#ff0','#32cd32'],
+            categories:['正常','重登/新设备','离线/故障'],
+            textStyle:{color:'#fff'},
+        },
+        geo: {
+            map: 'china',
+            label: {
+                emphasis: {
+                    show: false
+                }
+            },
+            itemStyle: {
+                normal: {
+                    areaColor: '#323c48',
+                    borderColor: '#111'
+                },
+                emphasis: {
+                    areaColor: '#2a333d'
+                }
+            }
+        },
+        series: [
+            {
+                name: '状态',
+                type: 'scatter',
+                coordinateSystem: 'geo',
+                data:
+                    [[114.1333,22.5333,'正常'],[133.1333,28.5333,'重登/新设备']],
+
+                symbolSize: 10,
+                label: {
+                    normal: {
+                        show: false
+                    },
+                    emphasis: {
+                        show: false
+                    }
+                },
+                itemStyle: {
+                    emphasis: {
+                        borderColor: '#fff',
+                        borderWidth: 1
+                    }
+                }
+            }
+        ]
+    }
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
