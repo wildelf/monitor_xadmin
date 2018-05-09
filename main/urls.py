@@ -18,6 +18,6 @@ from . import views
 
 app_name = 'main'
 urlpatterns = [
-
+    path('get/location/', views.get_location, name='get_location')
 
 ]
