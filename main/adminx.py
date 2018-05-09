@@ -133,6 +133,7 @@ xadmin.site.register(SitePermission, SitePermissionAdmin)
 xadmin.site.unregister(Group)
 xadmin.site.register(SiteUser, SiteUserAdmin)
 xadmin.site.register(SiteGroup, SiteGroupAdmin)
+xadmin.site.register(Device)
 
 
 

@@ -116,6 +116,21 @@ class Device(models.Model):
     deviceid =models.CharField(verbose_name='设备ID',max_length=255,unique=True)
     user = models.ForeignKey(SiteUser,verbose_name='关联用户',on_delete=models.CASCADE)
     join_date = models.DateTimeField(verbose_name='加入时间',auto_now=True)
+    longitude = models.FloatField(blank=True,null=True,verbose_name='经度')
+    latitude = models.FloatField(blank=True,null=True,verbose_name='纬度')
+    location = models.CharField(max_length=64,verbose_name='地点',blank=True,null=True)
+    status_choices = (
+        (0,'新设备'),
+        (1,'正常'),
+        (2,'离线重登'),
+        (3,'离线'),
+    )
+    status = models.SmallIntegerField(choices=status_choices,default=0,verbose_name='状态')
+    message_choices = (
+        (0,'是'),
+        (1,'否')
+    )
+    send_message = models.SmallIntegerField(choices=message_choices,default=1,verbose_name='信息提醒')
 
 
     class Meta:
