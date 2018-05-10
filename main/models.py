@@ -131,7 +131,7 @@ class Device(models.Model):
         (1,'否')
     )
     send_message = models.SmallIntegerField(choices=message_choices,default=1,verbose_name='信息提醒')
-
+    judge_date = models.DateTimeField(verbose_name='监控时间',blank=True,null=True)
 
     class Meta:
         # db_table = 'lable'

@@ -20,9 +20,7 @@ def received_sys_info(request):
         if not obj:
             return HttpResponse('该设备编号未注册')
         received_json_data['timestamp'] = int(time.time())
-        client = pymongo.MongoClient(MONGO_URL,MONGO_PORT)
-        db = client[MONGO_DB]
-        collection = db[machine_id]
+        collection = connect_mongo(machine_id)
         collection.insert_one(received_json_data)
         return HttpResponse("Post the system Monitor Data successfully!")
     else:
@@ -36,3 +34,26 @@ def send_message(phone_num):
     # print(result.content)
     return JsonResponse(json.loads(result.content.decode('utf-8')), safe=False)
 
+# 连接mongo
+def connect_mongo(db_name):
+    client = pymongo.MongoClient(MONGO_URL, MONGO_PORT)
+    db = client[MONGO_DB]
+    collection = db[db_name]
+    return collection
+
+# 获取检测时间内的数据
+def get_check_data(device_id):
+    collection = connect_mongo(device_id)
+    now_time = int(time.time())
+    find_time = now_time - JUDGE_TIMES
+    cursor = collection.find({'timestamp': {'$gt': find_time}}, {"timestamp": 1}).limit(0)
+    return cursor
+
+# 获取上一个检测时间内的数据
+def get_pre_check_data(device_id):
+    collection = connect_mongo(device_id)
+    now_time = int(time.time())
+    start_find_time = now_time - JUDGE_TIMES*2
+    end_find_time = now_time - JUDGE_TIMES
+    cursor = collection.find({'timestamp': {'$gt': start_find_time,'$lte':end_find_time}}, {"timestamp": 1}).limit(0)
+    return cursor
