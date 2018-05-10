@@ -6,3 +6,4 @@ httplib2
 six
 mysqlclient
 django-import_export
+schedule

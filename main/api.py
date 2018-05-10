@@ -19,6 +19,11 @@ def received_sys_info(request):
         obj = models.Device.objects.filter(deviceid=machine_id)
         if not obj:
             return HttpResponse('该设备编号未注册')
+        if not obj[0].longitude:
+            lng = received_json_data['location']['longitude']
+            lat = received_json_data['location']['latitude']
+            city = received_json_data['location']['city']
+            obj.update(longitude=lng,latitude=lat,location=city)
         received_json_data['timestamp'] = int(time.time())
         collection = connect_mongo(machine_id)
         collection.insert_one(received_json_data)
