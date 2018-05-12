@@ -135,3 +135,24 @@ class Device(models.Model):
 
     def __str_(self):
         return self.deviceid
+
+class CheckLog(models.Model):
+    date = models.DateTimeField(verbose_name='检测时间',blank=True,null=True)
+    device = models.ForeignKey(Device,verbose_name='设备',on_delete=models.CASCADE)
+    status_choices = (
+        (0, '在线'),
+        (1, '离线'),
+    )
+    status = models.SmallIntegerField(choices=status_choices, default=0, verbose_name='状态')
+    class Meta:
+        verbose_name = u'设备检测记录'
+        verbose_name_plural = u'设备检测记录'
+
+class MessageLog(models.Model):
+    date = models.DateTimeField(verbose_name='发送时间', blank=True, null=True)
+    user = models.ForeignKey(SiteUser, verbose_name='收信人', on_delete=models.CASCADE)
+    message = models.CharField(max_length=64,verbose_name='信息',blank=True,null=True)
+
+    class Meta:
+        verbose_name = u'信息记录'
+        verbose_name_plural = u'信息记录'

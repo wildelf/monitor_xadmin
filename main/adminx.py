@@ -67,12 +67,13 @@ class GlobalSetting(object):
                 #  'url': self.get_model_url(Permission, 'changelist')},
                 {'title': '权限', 'perm': self.get_model_perm(SitePermission, 'view'), 'icon': 'fa fa-lock',
                  'url': self.get_model_url(SitePermission, 'changelist')},
+                {'title': '设备', 'perm': self.get_model_perm(Device, 'view'), 'icon': 'fa fa-lock',
+                 'url': self.get_model_url(Device, 'changelist')},
 
             )},
             {'title': '日志管理', 'icon': 'fa fa-ticket', 'menus': (
                 {'title': '系统日志', 'perm': self.get_model_perm(Log, 'view'), 'icon': 'fa fa-ticket',
                  'url': self.get_model_url(Log, 'changelist')},
-
             )},
 
         )
@@ -104,6 +105,9 @@ class SiteUserAdmin(UserAdmin):
     # add_form_template = 'xadmin/newproduct.html'
     # form = ETHProductForm
 
+class DeviceAdmin(object):
+    list_display = ('deviceid', 'user', 'location')
+
 
 class SiteGroupAdmin(GroupAdmin):
     pass
@@ -133,7 +137,7 @@ xadmin.site.register(SitePermission, SitePermissionAdmin)
 xadmin.site.unregister(Group)
 xadmin.site.register(SiteUser, SiteUserAdmin)
 xadmin.site.register(SiteGroup, SiteGroupAdmin)
-xadmin.site.register(Device)
+xadmin.site.register(Device,DeviceAdmin)
 
 
 

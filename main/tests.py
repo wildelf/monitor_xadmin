@@ -1,7 +1,7 @@
 import json
 # Create your tests here.
 #
-import requests
+# import requests
 #
 # AK = 'YN2ajqOcsFnsZI2qbsYulnL6u9iU9dhF'
 #
@@ -21,12 +21,16 @@ import requests
 #     location = get_location(AK)
 #     print(location)
 
-# 发送信息
-def send_message(phone_num):
-    result = \
-    requests.get('http://www.wxeshop.com/wxclient/sendverifycode/', params={'phonenum': phone_num, 'code': 'hello'})
-    # print(result.content)
-    return result.text
+# # 发送信息
+# def send_message(phone_num):
+#     result = \
+#     requests.get('http://www.wxeshop.com/wxclient/sendverifycode/', params={'phonenum': phone_num, 'code': 'hello'})
+#     # print(result.content)
+#     return result.text
+#
+# a = send_message('18718681396')
+# print(a)
 
-a = send_message('18718681396')
-print(a)
+a = 0
+if a:
+    print(1)
