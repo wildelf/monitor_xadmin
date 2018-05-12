@@ -16,8 +16,9 @@ Including another URLconf
 from django.urls import path, include, re_path
 from main import views,api
 
-app_name = 'main'
+
 urlpatterns = [
     path('get/location/', views.get_location, name='get_location'),
     path('collection/', api.received_sys_info,name='data_recv'),
 ]
+

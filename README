@@ -1,3 +1,2 @@
-xadmin/templates/xadmin/views/
-添加一个map.html
-修改了dashboard.html
+yum or apt-get install redis-server
+pip install -r requirements.txt

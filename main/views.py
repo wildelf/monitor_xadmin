@@ -1,8 +1,8 @@
 from django.shortcuts import render,HttpResponse
-
-# Create your views here.
 import json
 from main import models
+# Create your views here.
+
 
 # 获取设备位置信息
 def get_location(request):
@@ -27,3 +27,5 @@ def get_location(request):
         data.append(device_data)
 
     return HttpResponse(json.dumps(data))
+
+

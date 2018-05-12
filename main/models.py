@@ -10,7 +10,6 @@ SEX = (
     ('2', u'女'),
 )
 
-
 class SiteUserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -42,14 +41,11 @@ class SiteUserManager(BaseUserManager):
 
         return self._create_user(username, password, **extra_fields)
 
-
-
 class SiteGroup(Group):
     class Meta:
         proxy = True
         verbose_name = '角色'
         verbose_name_plural = '角色'
-
 
 class SitePermission(Permission):
     class Meta:
@@ -110,7 +106,6 @@ class SiteUser(AbstractBaseUser, PermissionsMixin):
 
     def __str_(self):
         return self.username
-
 
 class Device(models.Model):
     deviceid =models.CharField(verbose_name='设备ID',max_length=255,unique=True)

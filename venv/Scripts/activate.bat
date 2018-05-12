@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=F:\项目\xtcloudmon\venv"
+set "VIRTUAL_ENV=F:\项目\二期\monitor_xadmin\venv"
 
 if defined _OLD_VIRTUAL_PROMPT (
     set "PROMPT=%_OLD_VIRTUAL_PROMPT%"

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'xadmin',
     'crispy_forms',
     'main',
+    'django_celery_beat'
 ]
 
 MIDDLEWARE = [
@@ -138,3 +139,12 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR,'static'),
 )
 AUTH_USER_MODEL = "main.SiteUser"
+
+import djcelery
+djcelery.setup_loader()
+
+BROKER_URL = 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'

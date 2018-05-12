@@ -1,4 +1,3 @@
-from django.http import JsonResponse
 import json
 # Create your tests here.
 #
@@ -29,5 +28,5 @@ def send_message(phone_num):
     # print(result.content)
     return result.text
 
-a = send_message(18718681396)
+a = send_message('18718681396')
 print(a)

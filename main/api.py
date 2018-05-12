@@ -32,12 +32,7 @@ def received_sys_info(request):
         return HttpResponse("Your push have errors, Please Check your data!")
 
 
-# 发送信息
-def send_message(phone_num):
-    result = \
-    requests.get('http://www.wxeshop.com/wxclient/sendverifycode/', params={'phonenum': phone_num, 'code': 'hello'})
-    # print(result.content)
-    return JsonResponse(json.loads(result.content.decode('utf-8')), safe=False)
+
 
 # 连接mongo
 def connect_mongo(db_name):
