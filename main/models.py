@@ -133,7 +133,7 @@ class Device(models.Model):
         verbose_name = u'设备'
         verbose_name_plural = u'设备'
 
-    def __str_(self):
+    def __str__(self):
         return self.deviceid
 
 class CheckLog(models.Model):
@@ -151,7 +151,7 @@ class CheckLog(models.Model):
 class MessageLog(models.Model):
     date = models.DateTimeField(verbose_name='发送时间', blank=True, null=True)
     user = models.ForeignKey(SiteUser, verbose_name='收信人', on_delete=models.CASCADE)
-    message = models.CharField(max_length=64,verbose_name='信息',blank=True,null=True)
+    message = models.CharField(max_length=64,verbose_name='信息内容',blank=True,null=True)
 
     class Meta:
         verbose_name = u'信息记录'

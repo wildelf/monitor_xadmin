@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 
 import socket
 
-from main.models import SiteUser, SiteGroup, SitePermission,Device
+from main.models import SiteUser, SiteGroup, SitePermission,Device,MessageLog,CheckLog
 
 from xadmin.models import Log
 import xadmin
@@ -74,6 +74,10 @@ class GlobalSetting(object):
             {'title': '日志管理', 'icon': 'fa fa-ticket', 'menus': (
                 {'title': '系统日志', 'perm': self.get_model_perm(Log, 'view'), 'icon': 'fa fa-ticket',
                  'url': self.get_model_url(Log, 'changelist')},
+                {'title': '监控记录', 'perm': self.get_model_perm(CheckLog, 'view'), 'icon': 'fa fa-ticket',
+                 'url': self.get_model_url(CheckLog, 'changelist')},
+                {'title': '短信记录', 'perm': self.get_model_perm(MessageLog, 'view'), 'icon': 'fa fa-ticket',
+                 'url': self.get_model_url(MessageLog, 'changelist')},
             )},
 
         )
@@ -108,6 +112,13 @@ class SiteUserAdmin(UserAdmin):
 class DeviceAdmin(object):
     list_display = ('deviceid', 'user', 'location')
 
+class CheckLogAdmin(object):
+    list_display = ('date', 'device', 'status')
+
+
+class MessageLogAdmin(object):
+    list_display = ('date', 'user', 'message')
+
 
 class SiteGroupAdmin(GroupAdmin):
     pass
@@ -138,6 +149,9 @@ xadmin.site.unregister(Group)
 xadmin.site.register(SiteUser, SiteUserAdmin)
 xadmin.site.register(SiteGroup, SiteGroupAdmin)
 xadmin.site.register(Device,DeviceAdmin)
+xadmin.site.register(CheckLog,CheckLogAdmin)
+xadmin.site.register(MessageLog,MessageLogAdmin)
+
 
 
 

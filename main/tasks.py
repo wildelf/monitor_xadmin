@@ -12,7 +12,7 @@ from main import models,api
 def send_message(phone_num,message,device_id=0):
 
     result = \
-    requests.get('http://www.wxeshop.com/wxclient/sendverifycode/', params={'phonenum': phone_num, 'message': message})
+    requests.get('http://www.wxeshop.com/wxclient/sendverifycode/', params={'phonenum': phone_num, 'code': message})
     res = json.loads(result.text)
     status = res.get('result')
 

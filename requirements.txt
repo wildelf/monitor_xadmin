@@ -6,8 +6,9 @@ httplib2
 six
 requests
 mysqlclient
+pymongo
 django-import_export
-celery==3.1.25
+celery
 celery-with-redis
 django-celery
 django_celery_beat
