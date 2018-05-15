@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse
 import json
+import pytz
 from main import models
 # Create your views here.
 
@@ -8,6 +9,7 @@ from main import models
 def get_location(request):
     all_devices = models.Device.objects.all()
     data = []
+    tz = pytz.timezone('Asia/Shanghai')
     for device in all_devices:
         device_data = []
         device_data.append(device.latitude)
@@ -16,7 +18,9 @@ def get_location(request):
         device_data.append(device.location)
         device_data.append(device.get_status_display())
         device_data.append(device.get_send_message_display())
-        device_data.append(str(device.judge_date)[:-9])
+        date = device.judge_date.astimezone(tz)
+        device_data.append(str(date)[:-9])
+        print(type(device.judge_date))
         if device.status==0 or device.status==2:
             device_data.append('重登/新设备')
         elif device.status==1:

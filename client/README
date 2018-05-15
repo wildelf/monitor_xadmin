@@ -9,9 +9,8 @@
 -------------------------------------------
 
 安装第三方插件：
-pip install psutil
-pip install schedule
-pip install requests
+pip install -r requirements.txt
+
 -------------------------------------------
 
 配置文件路径：client/conf/setting.py

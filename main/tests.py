@@ -1,11 +1,9 @@
+from django.shortcuts import render,HttpResponse
 import json
-import requests
-# 发送信息
-def send_message(phone_num):
-    result = \
-    requests.get('http://www.wxeshop.com/wxclient/sendverifycode/', params={'phonenum': phone_num, 'code': '你好'})
-    return result.text
+from main import models
+# Create your views here.
 
-for i in range(10):
-    send_message('18718681396')
+def get_location():
+    device = models.Device.objects.all()[0]
+    print(type(device.judge_date._local_timezone()),device.judge_date._local_timezone())
 
