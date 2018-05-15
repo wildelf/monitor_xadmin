@@ -2,6 +2,7 @@ from django.shortcuts import render,HttpResponse
 import json
 import pytz
 from main import models
+
 # Create your views here.
 
 
@@ -31,5 +32,6 @@ def get_location(request):
         data.append(device_data)
 
     return HttpResponse(json.dumps(data))
+
 
 

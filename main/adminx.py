@@ -12,7 +12,6 @@ from django.urls import reverse
 from django.utils.translation import ugettext_lazy as _, ugettext
 
 import socket
-
 from main.models import SiteUser, SiteGroup, SitePermission,Device,MessageLog,CheckLog
 
 from xadmin.models import Log
@@ -50,6 +49,8 @@ class GlobalSetting(object):
             {'title': '工作台', 'url': '/xadmin/', 'icon': 'shouye'},
 
             {'title': '实时监控', 'icon': 'fa fa-list', 'menus': (
+                {'title': '系统监控','icon': 'fa fa-table',
+                 'url': '/monitor/index/'},
 
             )},
 
@@ -139,6 +140,8 @@ class SitePermissionAdmin(object):
 
 class DashboardModelAdmin(object):
     pass
+
+
 
 
 

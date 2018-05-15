@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
     path('main/', include('main.urls')),
+    path('monitor/',include('monitor.urls'))
 ]

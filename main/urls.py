@@ -20,5 +20,6 @@ from main import views,api
 urlpatterns = [
     path('get/location/', views.get_location, name='get_location'),
     path('collection/', api.received_sys_info,name='data_recv'),
+
 ]
 

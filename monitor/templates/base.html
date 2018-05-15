@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    {% include 'link_css.html' %}
+    {% include 'head_script.html' %}
+    {% block self_head_css_js %} {% endblock %}
+
+</head>
+<body class="hold-transition skin-yellow-light sidebar-mini">
+    <div id="top-nav" class="navbar navbar-xs navbar-inverse navbar-fixed-top">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/xadmin">WIN10设备监测系统管理后台</a>
+        </div>
+
+    </div>
+    <div class="wrapper" style="padding: 25px 0px">
+        {% block content %}
+        {% endblock %}
+        <aside class="main-sidebar">
+            <section class="sidebar">
+              <!-- Sidebar Menu -->
+                <ul class="sidebar-menu" id="sidebar-menu">
+                <li id="monitor"><a href="/monitor/index/"><i class="fa fa-television"></i> <span>监控平台</span></a></li>
+              </ul>
+            </section>
+            <!-- /.sidebar -->
+          </aside>
+
+    </div>
+</body>
+{% block self_footer_js %} {% endblock %}
+</html>
