@@ -38,6 +38,7 @@ setInterval(function () {
         },
         geo: {
             map: 'china',
+            roam: true,
             label: {
                 emphasis: {
                     show: false
@@ -53,6 +54,43 @@ setInterval(function () {
                 }
             }
         },
+        roamController: {
+                // 显示策略，可选为：true（显示） | false（隐藏）
+                show: true,
+                // 水平安放位置，默认为左侧，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+                x: 'right',
+                // 垂直安放位置，默认为全图顶端，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
+                y: 'top',
+                // 指定宽度，决定4向漫游圆盘大小，可指定 {number}（宽度，单位px）
+                show: true,
+                // 水平安放位置，默认为左侧，可选为：'center' | 'left' | 'right' | {number}（x坐标，单位px）
+                x: 'right',
+                // 垂直安放位置，默认为全图顶端，可选为：'top' | 'bottom' | 'center' | {number}（y坐标，单位px）
+                y: 'top',
+                // 指定宽度，决定4向漫游圆盘大小，可指定 {number}（宽度，单位px）
+                width: 120,
+                // 指定高度，缩放控制键默认会在指定高度的最下方最大化显示，可指定 {number}（高度，单位px）
+                height:200,
+                // 缩放漫游组件背景颜色，默认透明
+                backgroundColor:'rgba(0,0,0,0.1)',
+                // 缩放漫游组件边框颜色
+                borderColor: '#1e90ff',
+                // 缩放漫游组件边框线宽，单位px，默认为0（无边框）
+                borderWidth: 1,
+                // 缩放漫游组件内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距，同css
+                padding: [15,15,15,15],
+                // 漫游组件文字填充颜色
+                fillerColor:'#000',
+                // 控制手柄主体颜色
+                handleColor:'#e3655a',
+                // 4向漫游移动步伐，单位px
+                step:10,
+                // 必须，指定漫游组件可控地图类型
+                mapTypeControl: {
+                    'china': true
+                }
+            },
+
         series: [
             {
                 name: '状态',
